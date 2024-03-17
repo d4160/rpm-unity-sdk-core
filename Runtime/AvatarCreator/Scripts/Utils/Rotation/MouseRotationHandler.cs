@@ -30,6 +30,11 @@ namespace ReadyPlayerMe.AvatarCreator
             return rotate;
         }
 
+        public void SetRotate(bool rotate)
+        {
+            this.rotate = rotate;
+        }
+
         /// <summary>
         /// Gets the rotation amount based on mouse input.
         /// </summary>
