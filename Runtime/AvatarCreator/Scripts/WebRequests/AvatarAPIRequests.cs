@@ -78,6 +78,9 @@ namespace ReadyPlayerMe.AvatarCreator
 
             var payload = AuthDataConverter.CreatePayload(payloadData);
 
+            Debug.Log($"Url: {RPM_AVATAR_V2_BASE_URL}/templates/{templateId}");
+            Debug.Log($"AvatarProperties Payload: {payload}");
+
             var response = await authorizedRequest.SendRequest<Response>(
                 new RequestData
                 {
@@ -90,8 +93,13 @@ namespace ReadyPlayerMe.AvatarCreator
 
             response.ThrowIfError();
 
+
+
             var json = JObject.Parse(response.Text);
             var data = json[DATA]!.ToString();
+
+            Debug.Log($"Response data: {data}");
+
             return JsonConvert.DeserializeObject<AvatarProperties>(data);
         }
 
@@ -154,6 +162,8 @@ namespace ReadyPlayerMe.AvatarCreator
 
         public async Task<AvatarProperties> CreateNewAvatar(AvatarProperties avatarProperties)
         {
+            Debug.Log($"Url: {RPM_AVATAR_V2_BASE_URL}");
+            Debug.Log($"AvatarProperties Payload: {avatarProperties.ToJson(true)}");
             var response = await authorizedRequest.SendRequest<Response>(
                 new RequestData
                 {
@@ -167,6 +177,10 @@ namespace ReadyPlayerMe.AvatarCreator
 
             var metadata = JObject.Parse(response.Text);
             var data = metadata[DATA]!.ToString();
+
+            Debug.Log($"Response data: {data}");
+
+
             return JsonConvert.DeserializeObject<AvatarProperties>(data);
         }
 
@@ -213,6 +227,10 @@ namespace ReadyPlayerMe.AvatarCreator
         public async Task<byte[]> UpdateAvatar(string avatarId, AvatarProperties avatarProperties, string parameters = null)
         {
             var url = $"{RPM_AVATAR_V2_BASE_URL}/{avatarId}?responseType=glb&{parameters}";
+
+            Debug.Log($"Url: {url}");
+            Debug.Log($"AvatarProperties:");
+            Debug.Log(avatarProperties.ToJson(true));
 
             var response = await authorizedRequest.SendRequest<Response>(
                 new RequestData
