@@ -3,6 +3,61 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [6.2.4] - 2024.05.03
+
+### Fixed
+
+- Updated XR template prefab meshes to prevent missing bone references to fix mexh transfer [#266](https://github.com/readyplayerme/rpm-unity-sdk-core/pull/266)
+
+## [6.2.3] - 2024.04.29
+
+### Fixed
+
+- reverted update to GetMeshRenderer method  [#264](https://github.com/readyplayerme/rpm-unity-sdk-core/pull/264)
+
+## [6.2.2] - 2024.04.29
+
+### Updated
+
+- Updated XR template avatar to have separated head mesh [#261](https://github.com/readyplayerme/rpm-unity-sdk-core/pull/261)
+- Improved GetMeshRenderer() method to exclude invalid mesh renderers [#261](https://github.com/readyplayerme/rpm-unity-sdk-core/pull/261)
+
+### Fixed
+
+- Fixed issue with XR animation avatars
+
+## [6.2.1] - 2024.04.23
+
+### Fixed
+
+- An issue with gender and avatarID not to be set in AvatarManager [#260](https://github.com/readyplayerme/rpm-unity-sdk-core/pull/260)
+
+## [6.2.0] - 2024.04.22
+
+### Added
+
+- XR template avatar added to the Resources folder [#258](https://github.com/readyplayerme/rpm-unity-sdk-core/pull/258)
+- Avatar Creator now supports body shapes [#252](https://github.com/readyplayerme/rpm-unity-sdk-core/pull/252)
+- support for unknown exceptions [#251](https://github.com/readyplayerme/rpm-unity-sdk-core/pull/251)
+- Simple PanelManager script
+- Optional define symbol to remove camera permissions from the Android manifest [#259](https://github.com/readyplayerme/rpm-unity-sdk-core/pull/259)
+
+## Updated
+
+- removed use of tuples and deprecated old methods [#257](https://github.com/readyplayerme/rpm-unity-sdk-core/pull/257)
+
+## [6.1.2] - 2024.04.03
+
+### Updated
+
+- xr animation avatars updated to support with latest xr avatar updates
+
+## [6.1.1] - 2024.04.03
+
+### Updated
+
+- avatars done with a photo are now added as a draft avatars [#254](https://github.com/readyplayerme/rpm-unity-sdk-core/pull/254)
+
 ## [6.1.0] - 2024.03.04
 
 ### Updated

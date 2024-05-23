@@ -1,6 +1,6 @@
 
 ## Changelog
 
-### Updated
+### Fixed
 
-- updated default render settings to fix an issue causing incorrect halfbody avatar renders [#238](https://github.com/readyplayerme/rpm-unity-sdk-core/pull/238)
+- Updated XR template prefab meshes to prevent missing bone references to fix mexh transfer [#266](https://github.com/readyplayerme/rpm-unity-sdk-core/pull/266)
