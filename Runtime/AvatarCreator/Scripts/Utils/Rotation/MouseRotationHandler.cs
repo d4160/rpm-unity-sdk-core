@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace ReadyPlayerMe.AvatarCreator
 {
@@ -17,12 +18,14 @@ namespace ReadyPlayerMe.AvatarCreator
         /// <returns>True if mouse input is detected; otherwise, false.</returns>
         public bool IsInputDetected()
         {
-            if (Input.GetMouseButtonDown(MOUSE_BUTTON_INDEX))
+            Mouse mouse = Mouse.current;
+            if (mouse.leftButton.wasPressedThisFrame)
             {
-                lastPosX = Input.mousePosition.x;
+                lastPosX = mouse.position.x.value;
                 rotate = true;
             }
-            else if (Input.GetMouseButtonUp(MOUSE_BUTTON_INDEX))
+            // Input.GetMouseButtonUp(MOUSE_BUTTON_INDEX)
+            else if (mouse.leftButton.wasReleasedThisFrame)
             {
                 rotate = false;
             }
@@ -41,8 +44,9 @@ namespace ReadyPlayerMe.AvatarCreator
         /// <returns>The rotation amount as a float value.</returns>
         public float GetRotationAmount()
         {
-            var rotationAmount = lastPosX - Input.mousePosition.x;
-            lastPosX = Input.mousePosition.x;
+            Mouse mouse = Mouse.current;
+            var rotationAmount = lastPosX - mouse.position.x.value;
+            lastPosX = mouse.position.x.value;
             return rotationAmount;
         }
     }

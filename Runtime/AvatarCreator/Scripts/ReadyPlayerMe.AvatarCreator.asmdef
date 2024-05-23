@@ -2,7 +2,8 @@
     "name": "ReadyPlayerMe.AvatarCreator",
     "rootNamespace": "",
     "references": [
-        "ReadyPlayerMe.Core"
+        "ReadyPlayerMe.Core",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
