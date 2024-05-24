@@ -162,8 +162,8 @@ namespace ReadyPlayerMe.AvatarCreator
 
         public async Task<AvatarProperties> CreateNewAvatar(AvatarProperties avatarProperties)
         {
-            Debug.Log($"Url: {RPM_AVATAR_V2_BASE_URL}");
-            Debug.Log($"AvatarProperties Payload: {avatarProperties.ToJson(true)}");
+            //Debug.Log($"Url: {RPM_AVATAR_V2_BASE_URL}");
+            //Debug.Log($"AvatarProperties Payload: {avatarProperties.ToJson(true)}");
             var response = await authorizedRequest.SendRequest<Response>(
                 new RequestData
                 {
@@ -178,7 +178,7 @@ namespace ReadyPlayerMe.AvatarCreator
             var metadata = JObject.Parse(response.Text);
             var data = metadata[DATA]!.ToString();
 
-            Debug.Log($"Response data: {data}");
+            //Debug.Log($"Response data: {data}");
 
 
             return JsonConvert.DeserializeObject<AvatarProperties>(data);
@@ -228,9 +228,9 @@ namespace ReadyPlayerMe.AvatarCreator
         {
             var url = $"{RPM_AVATAR_V2_BASE_URL}/{avatarId}?responseType=glb&{parameters}";
 
-            Debug.Log($"Url: {url}");
-            Debug.Log($"AvatarProperties:");
-            Debug.Log(avatarProperties.ToJson(true));
+            //Debug.Log($"Url: {url}");
+            //Debug.Log($"AvatarProperties:");
+            //Debug.Log(avatarProperties.ToJson(true));
 
             var response = await authorizedRequest.SendRequest<Response>(
                 new RequestData
