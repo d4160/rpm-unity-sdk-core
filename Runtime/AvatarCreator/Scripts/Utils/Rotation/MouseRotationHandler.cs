@@ -1,3 +1,5 @@
+#if !DEDICATED_SERVER
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,6 +20,22 @@ namespace ReadyPlayerMe.AvatarCreator
         /// <returns>True if mouse input is detected; otherwise, false.</returns>
         public bool IsInputDetected()
         {
+#if UNITY_ANDROID
+            var touch = Touchscreen.current;
+
+            if (touch == null)
+                return false;
+
+            if (touch.primaryTouch.press.wasPressedThisFrame)
+            {
+                lastPosX = touch.primaryTouch.position.ReadValue().x;
+                rotate = true;
+            }
+            else if (touch.primaryTouch.press.wasReleasedThisFrame)
+            {
+                rotate = false;
+            }
+#else
             Mouse mouse = Mouse.current;
             if (mouse.leftButton.wasPressedThisFrame)
             {
@@ -29,6 +47,7 @@ namespace ReadyPlayerMe.AvatarCreator
             {
                 rotate = false;
             }
+#endif
 
             return rotate;
         }
@@ -44,10 +63,21 @@ namespace ReadyPlayerMe.AvatarCreator
         /// <returns>The rotation amount as a float value.</returns>
         public float GetRotationAmount()
         {
+#if UNITY_ANDROID
+            var touch = Touchscreen.current;
+            if (touch == null)
+                return 0f;
+
+            var rotationAmount = lastPosX - touch.position.x.value;
+            lastPosX = touch.position.x.value;
+            return rotationAmount;
+#else
             Mouse mouse = Mouse.current;
             var rotationAmount = lastPosX - mouse.position.x.value;
             lastPosX = mouse.position.x.value;
             return rotationAmount;
+#endif
         }
     }
 }
+#endif
